@@ -1,0 +1,7 @@
+.section-item-title {
+    cursor: pointer;
+}
+.course-section-body .sidebar-section-item  .activeLesson{
+    background-color: tomato !important;
+    color: #000;
+}

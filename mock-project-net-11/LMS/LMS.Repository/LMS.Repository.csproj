@@ -1,0 +1,62 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <Optimize>True</Optimize>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <Optimize>False</Optimize>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="20220116041401_InitialMigration.cs" />
+    <Compile Remove="20220116041401_InitialMigration.Designer.cs" />
+    <Compile Remove="20220116051016_InitialMigration.cs" />
+    <Compile Remove="20220116051016_InitialMigration.Designer.cs" />
+    <Compile Remove="Migrations\20220125080644_UpdateHelpTable.cs" />
+    <Compile Remove="Migrations\20220125080644_UpdateHelpTable.Designer.cs" />
+    <Compile Remove="Migrations\20220125090304_AddSelfKeyForDiscussionTable.cs" />
+    <Compile Remove="Migrations\20220125090304_AddSelfKeyForDiscussionTable.Designer.cs" />
+    <Compile Remove="Migrations\20220125090556_AddSelfKeyForDiscussionTable.cs" />
+    <Compile Remove="Migrations\20220125090556_AddSelfKeyForDiscussionTable.Designer.cs" />
+    <Compile Remove="Migrations\20220125090657_AddSelfKeyForDiscussionTable.cs" />
+    <Compile Remove="Migrations\20220125090657_AddSelfKeyForDiscussionTable.Designer.cs" />
+    <Compile Remove="Migrations\20220125094443_AddSelfKeyForDiscussionTable.cs" />
+    <Compile Remove="Migrations\20220125094443_AddSelfKeyForDiscussionTable.Designer.cs" />
+    <Compile Remove="Migrations\20220125094754_AddSelfKeyForDiscussionTable.cs" />
+    <Compile Remove="Migrations\20220125094754_AddSelfKeyForDiscussionTable.Designer.cs" />
+    <Compile Remove="Migrations\20220126065420_AddConfigAndDeleteColumnToAppUserTable.cs" />
+    <Compile Remove="Migrations\20220126065420_AddConfigAndDeleteColumnToAppUserTable.Designer.cs" />
+    <Compile Remove="Migrations\20220126072521_Test.cs" />
+    <Compile Remove="Migrations\20220126072521_Test.Designer.cs" />
+    <Compile Remove="Migrations\20220214024946_AddedUserVotersTable.cs" />
+    <Compile Remove="Migrations\20220214024946_AddedUserVotersTable.Designer.cs" />
+    <Compile Remove="Migrations\20220214033458_AddedUserVotersTableAndSomeColumnsToAppUsers.cs" />
+    <Compile Remove="Migrations\20220214033458_AddedUserVotersTableAndSomeColumnsToAppUsers.Designer.cs" />
+    <Compile Remove="Migrations\20220214085326_AddIconColoumnAndSeedDataInCategoriesTable.cs" />
+    <Compile Remove="Migrations\20220214085326_AddIconColoumnAndSeedDataInCategoriesTable.Designer.cs" />
+    <Compile Remove="Migrations\20220216160913_AddOneToOneRelationShipBetweenCertificateAndCourseTables.cs" />
+    <Compile Remove="Migrations\20220216160913_AddOneToOneRelationShipBetweenCertificateAndCourseTables.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="UnitOfWork\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="DynamicExpressions.NET" Version="1.1.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="5.0.13" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.22" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.22" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.22">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="System.Linq.Dynamic.Core" Version="1.2.15" />
+  </ItemGroup>
+
+</Project>

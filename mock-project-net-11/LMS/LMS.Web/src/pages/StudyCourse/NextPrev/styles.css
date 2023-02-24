@@ -1,0 +1,11 @@
+.progressStudy{
+    display: flex;
+}
+.iconProgress,.titleProgress{
+    color: #fff;
+    margin: auto 5px;
+}
+.totalProgress{
+    margin: auto;
+    color: tomato;
+}

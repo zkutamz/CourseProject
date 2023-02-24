@@ -1,0 +1,7 @@
+.course_tab_content .tab-content .tab-pane{
+    display: flex;  
+}
+.course_tab_content .tab-content .fade:not(.show)
+{
+    opacity: 1;
+}

@@ -1,0 +1,823 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>LMS.API</name>
+    </assembly>
+    <members>
+        <member name="M:LMS.API.Controllers.AdminController.ChangeBlockUser(LMS.Model.Request.AppUserDTOs.AppUserBlockStatusDTO)">
+            <summary>
+            Change block status of user
+            </summary>
+            <param name="status"></param>
+            <returns>True if success</returns>
+        </member>
+        <member name="M:LMS.API.Controllers.AdminController.UpdateUserInfor(System.Int32,LMS.Model.Request.AppUserDTOs.AppUserEditDTO)">
+            <summary>
+            Update user infor
+            </summary>
+            <param name="id"></param>
+            <param name="userEdit"></param>
+            <returns>True if success</returns>
+        </member>
+        <member name="M:LMS.API.Controllers.AdminController.DeleteUser(System.Int32)">
+            <summary>
+            Delete user
+            </summary>
+            <param name="id"></param>
+            <returns>True if success</returns>
+        </member>
+        <member name="M:LMS.API.Controllers.AssignmentsController.GetAssignmentDetails(System.Int32)">
+            <summary>
+            Get assignment details
+            </summary>
+            <param name="assignmentId"></param>
+            <returns></returns>
+            <exception cref="T:LMS.Model.Exceptions.BadRequestException"></exception>
+        </member>
+        <member name="M:LMS.API.Controllers.AssignmentsController.CreateAssignment(LMS.Model.Request.AssignmentDTOs.AssignmentCreateDTO)">
+            <summary>
+            Create assignment
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+            <exception cref="T:LMS.Model.Exceptions.BadRequestException"></exception>
+        </member>
+        <member name="M:LMS.API.Controllers.AssignmentsController.UpdateAssignment(System.Int32,LMS.Model.Request.AssignmentDTOs.AssignmentEditDTO)">
+            <summary>
+            Update assignment
+            </summary>
+            <param name="id"></param>
+            <param name="request"></param>
+            <returns></returns>
+            <exception cref="T:LMS.Model.Exceptions.BadRequestException"></exception>
+        </member>
+        <member name="M:LMS.API.Controllers.AssignmentsController.DeleteAssignment(System.Int32)">
+            <summary>
+            Delete assignment
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+            <exception cref="T:LMS.Model.Exceptions.BadRequestException"></exception>
+        </member>
+        <member name="M:LMS.API.Controllers.AssignmentSubmissionsController.CreateAssignmentSubmissions(LMS.Model.Request.AssignmentSubmissionsDTOs.AssignmentSubmissionsCreateDTO)">
+            <summary>
+            After completed the assignment, Create assignment submission to save result.
+            </summary>
+            <param name="assignmentSubmissionsCreateDTO">AssignmentSubmissionsCreateDTO</param>
+            <returns>true:success false: failed</returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:LMS.API.Controllers.AssignmentSubmissionsController.CheckAssignmentSubmissionCompleted(LMS.Model.Request.CommonDTOs.CheckStatusStudyDTO)" -->
+        <member name="M:LMS.API.Controllers.CertificatesController.FilterByCategory(System.Int32)">
+            <summary>
+            Return list certificate was filltered by category
+            </summary>
+            <param name="certificateCategoryId"></param>
+            <returns> Status code 200 if success, otherwise return status code and error message</returns>
+        </member>
+        <member name="M:LMS.API.Controllers.CertificatesController.GetCertificatesOfStudent(LMS.Repository.Paging.PagingRequest)">
+            <summary>
+            Return list certificate detail 
+            </summary>
+            <param name="pagingRequest"></param>
+            <returns> Status code 200: list certificate infomation if success, otherwise return status code and error message</returns>
+        </member>
+        <member name="M:LMS.API.Controllers.CertificatesController.GetQuizzQuestionOfCertificate(LMS.Repository.Paging.PagingRequest,System.Int32,System.Int32)">
+            <summary>
+            Get all question test of a certificate 
+            </summary>
+            <param name="pagingRequest"></param>
+            <param name="certificateCategory"></param>
+            <returns> Status code 200: list question test if success, otherwise return status code and error message</returns>
+        </member>
+        <member name="M:LMS.API.Controllers.CertificateTemplateController.GetAllCertificateTemplate(LMS.Repository.Paging.PagingRequest)">
+            <summary>
+            This Api will return a list of CertificateTemplate Detail and it paging
+            </summary>
+            <param name="pagingRequest"></param>
+            <returns>List paging of Certificate detail; Status code 404 if certificate template does not exist</returns>
+        </member>
+        <member name="M:LMS.API.Controllers.CertificateTemplateController.GetCertifiacteTemplate(System.Int32)">
+            <summary>
+            This API will return a CertitificateTemplate detail
+            </summary>
+            <param name="certificateTemplateId"></param>
+            <returns>Status code 200 :CertitificateTemplate if success; Stuscode 404 if certificate template does not exist</returns>
+        </member>
+        <member name="M:LMS.API.Controllers.CertificateTemplateController.CreateCertificateTemplate(LMS.Model.Request.CertificateTemplateDTOs.CertificateTemplateCreateDTO)">
+            <summary>
+            This API will add new CertificateTemplate
+            </summary>
+            <param name="certificateTemplateCreateDTO"></param>
+            <returns>Stutus code 200 if success, Status code 400 if have bad requet; Status code 409 if conflict</returns>
+        </member>
+        <member name="M:LMS.API.Controllers.CertificateTemplateController.UpdateCertificateTemplte(System.Int32,LMS.Model.Request.CertificateTemplateDTOs.CertificateTemplateEditDTO)">
+            <summary>
+            This API will update existed certificate template in database 
+            </summary>
+            <param name="certificateTemplateId"></param>
+            <param name="certificateTemplateEditDTO"></param>
+            <returns>Status code 200 if success; Status code 409 if conflict in database; Status code 400 if values invalid; Status code 404 if certicate want to update does not exist </returns>
+        </member>
+        <member name="M:LMS.API.Controllers.CertificateTemplateController.DeleteCertificateTemplate(System.Int32)">
+            <summary>
+            This API will soft delele certificate template by change it status in database
+            </summary>
+            <param name="certificateTemplateId"></param>
+            <returns>Status code 200 if success; Status code 404 if not found certificate template</returns>
+        </member>
+        <member name="M:LMS.API.Controllers.CourseManagementController.CreateCourseDiscountAsync(LMS.Model.Request.CourseDiscountDTOs.CourseDiscountCreateDTO)">
+            <summary>
+            create discount for a course
+            </summary>
+            <param name="courseDiscountCreateDTO">discount information</param>
+            <returns></returns>
+        </member>
+        <member name="M:LMS.API.Controllers.CourseManagementController.UpdateCourseDiscountAsync(System.Int32,LMS.Model.Request.CourseDiscountDTOs.CourseDiscountEditDTO)">
+            <summary>
+            update discount for a course
+            </summary>
+            <param name="courseDiscountId">id of discount in sales off date</param>
+            <param name="courseDiscountCreateDTO">discount information</param>
+            <returns></returns>
+        </member>
+        <member name="M:LMS.API.Controllers.CourseManagementController.DisposeCourseDiscountAsync(System.Int32)">
+            <summary>
+            delete logic a course discount
+            </summary>
+            <param name="courseDiscountId">courseDiscount's id</param>
+            <returns></returns>
+        </member>
+        <member name="M:LMS.API.Controllers.CourseManagementController.CreatePromotion(LMS.Model.Request.CoursePromotionDTOs.CoursePromotionCreateDTO)">
+            <summary>
+            create new promotion
+            </summary>
+            <param name="coursePromotionCreateDTO">promotion's information</param>
+            <returns></returns>
+        </member>
+        <member name="M:LMS.API.Controllers.CourseManagementController.GetTotalQACommentOnCourse(System.Int32,LMS.Repository.Paging.PagingRequest)">
+            <summary>
+            Get total QA comment on course
+            </summary>
+            <param name="courseId"></param>
+            <param name="pagingRequest"></param>
+            <returns></returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:LMS.API.Controllers.CoursesController.GetAllFavoriteCourses(System.Int32,LMS.Repository.Paging.PagingRequest)" -->
+        <member name="M:LMS.API.Controllers.CoursesController.CreateFavoriteCourse(LMS.Model.Request.CourseFavoriteDTOs.CourseFavoriteCreateDTO)">
+            <summary>
+            Save course to  list favorite course of user.
+            </summary>
+            <param name="courseFavoriteCreateDTO">CourseFavoriteCreateDTO</param>
+            <returns>true:success, false: failed</returns>
+        </member>
+        <member name="M:LMS.API.Controllers.CoursesController.DeleteFavoriteCourse(System.Int32)">
+            <summary>
+            Dlete favorite course of user by favoriteCourseID
+            </summary>
+            <param name="id">favoriteCourseID</param>
+            <returns>true:success, false: failed</returns>
+        </member>
+        <member name="M:LMS.API.Controllers.CoursesController.DeleteAllFavoriteCourse(System.Int32)">
+            <summary>
+            Delete all favorite course of user by userID
+            </summary>
+            <param name="userID">userID</param>
+            <returns>true:success, false: failed</returns>
+        </member>
+        <member name="M:LMS.API.Controllers.CoursesController.GetTeacherByName(System.String)">
+            <summary>
+            Get Teacher By Name
+            </summary>
+            <param name="userName"></param>
+            <param name="pagingRequest"></param>
+            <returns>info teacher</returns>
+        </member>
+        <member name="M:LMS.API.Controllers.CoursesController.GetAllCourseByCategoryName(System.String,LMS.Repository.Paging.PagingRequest)">
+            <summary>
+            GetAllCourseByCategoryName
+            </summary>
+            <param name="categoryName"> </param>
+            <param name="pagingRequest"></param>
+            <returns>return list course by category</returns>
+        </member>
+        <member name="M:LMS.API.Controllers.CoursesController.GetCurrentCourse">
+            <summary>
+            Get current course being study
+            </summary>
+            <param name="userName"></param>
+            <param name="pagingRequest"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LMS.API.Controllers.CoursesController.GetCourseDetailForStudy(System.Int32)">
+            <summary>
+            This API use for Download Course View Page 
+            </summary>
+            <param name="courseId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LMS.API.Controllers.CoursesController.GetCourseOverviewForStudy(System.Int32)">
+            <summary>
+            This action method get course overview information for displaying in course study page.
+            </summary>
+            <param name="courseId">Course ID to filter</param>
+            <returns>An course overview DTO object.</returns>
+        </member>
+        <member name="M:LMS.API.Controllers.CoursesController.GetTopCourseForAnalyic(System.Int32)">
+            <summary>
+            API Get top course for Instructor page
+            </summary>
+            <param name="instructorId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LMS.API.Controllers.CoursesController.GetTotalItemOfCourse(System.Int32)">
+            <summary>
+            Get Total Item Of Course: quiz + assignment + lesson.
+            </summary>
+            <param name="instructorId">courseId</param>
+            <returns>total item</returns>
+        </member>
+        <member name="M:LMS.API.Controllers.CoursesController.GetTotalItemCompletedOfCourse(System.Int32,System.Int32)">
+            <summary>
+            Get Total Item completed Course of user: quiz + assignment + lesson.
+            </summary>
+            <param name="userID">userID</param>
+            <param name="courseID">courseID</param>
+            <returns>total item completed</returns>
+        </member>
+        <member name="M:LMS.API.Controllers.CoursesController.CheckDraftCourseOfDay(System.Int32)">
+            <summary>
+            Check draft course of user on a day
+            </summary>
+            <param name="userId"></param>
+            <returns>true if user have any draft course and false if none</returns>
+        </member>
+        <member name="M:LMS.API.Controllers.CoursesController.CreateCourseBasic(LMS.Model.Request.CourseDTOs.CourseCreateDTO)">
+            <summary>
+            Create new course and mark draft
+            </summary>
+            <param name="courseCreateBasic"></param>
+            <returns>New draft course Id</returns>
+        </member>
+        <member name="M:LMS.API.Controllers.CoursesController.CreateCourseMedia(System.Int32,LMS.Model.Request.CourseDTOs.CourseMediaCreateDTO)">
+            <summary>
+            Update media for create draft course
+            </summary>
+            <param name="id"></param>
+            <param name="mediaCreate"></param>
+            <returns>true if success and false if fail</returns>
+        </member>
+        <member name="M:LMS.API.Controllers.CoursesController.CreateCoursePrice(System.Int32,LMS.Model.Request.CourseDTOs.CoursePriceCreateDTO)">
+            <summary>
+            Update price for create draft course
+            </summary>
+            <param name="id"></param>
+            <param name="priceCreate"></param>
+            <returns>true if success and false if fail</returns>
+        </member>
+        <member name="M:LMS.API.Controllers.CoursesController.CreateCourseToPending(System.Int32)">
+            <summary>
+            Api to change draft course to pending 
+            </summary>
+            <param name="courseCreate"></param>
+            <returns>true if success and false if fail</returns>
+        </member>
+        <member name="M:LMS.API.Controllers.CoursesController.GetNewestDraftOfDay(System.Int32)">
+            <summary>
+            Get newest draft course 
+            </summary>
+            <param name="userId"></param>
+            <returns>CourseCreateDTO</returns>
+        </member>
+        <member name="M:LMS.API.Controllers.CoursesController.GetAllDraftCourseOfUser(System.Int32)">
+            <summary>
+            Get all draft courses of user
+            </summary>
+            <param name="userId"></param>
+            <returns>List CourseDTO</returns>
+        </member>
+        <member name="M:LMS.API.Controllers.FilesController.UploadFile(Microsoft.AspNetCore.Http.IFormFile)">
+            <summary>
+            Upload file with iform file
+            </summary>
+            <param name="file"></param>
+            <returns>url file</returns>
+        </member>
+        <member name="M:LMS.API.Controllers.FilesController.UploadFile(System.Collections.Generic.List{Microsoft.AspNetCore.Http.IFormFile})">
+            <summary>
+            Multiple upload file
+            </summary>
+            <param name="files">List Iform file</param>
+            <returns>List Url</returns>
+        </member>
+        <member name="M:LMS.API.Controllers.FilesController.DeleteFile(System.String)">
+            <summary>
+            Delete file with file name
+            </summary>
+            <param name="fileName">Ex: image.png</param>
+            <returns>bool</returns>
+        </member>
+        <member name="M:LMS.API.Controllers.FilesController.Download(System.String)">
+            <summary>
+            Download file with name ex: image.png
+            </summary>
+            <param name="path"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LMS.API.Controllers.HelpsController.GetHelpByUserContent(System.String)">
+            <summary>
+            Get Help by userContent
+            </summary>
+            <param name="userContent"></param>
+            <returns>HelpDTO</returns>
+        </member>
+        <member name="M:LMS.API.Controllers.HelpsController.GetTopicDetail(System.Int32)">
+            <summary>
+            Get Topic Detail
+            </summary>
+            <param name="id"></param>
+            <returns>HelpTopicDetailDTO</returns>
+        </member>
+        <member name="M:LMS.API.Controllers.HelpsController.GetArticleDetail(System.Int32)">
+            <summary>
+            Get Article Detail
+            </summary>
+            <param name="id"></param>
+            <returns>HelpArticleDetailDTO</returns>
+        </member>
+        <member name="M:LMS.API.Controllers.LessonCompletionsController.CreateLessonCompletion(LMS.Model.Request.LessonCompletionDTOs.LessonCompletionCreateDTO)">
+            <summary>
+            Create Lesson completion after user completed the lesson
+            </summary>
+            <param name="lessonCompletionCreateDTO">lessonCompletionCreateDTO</param>
+            <returns>true:success false: failed</returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:LMS.API.Controllers.LessonCompletionsController.CheckLessonCompleted(LMS.Model.Request.CommonDTOs.CheckStatusStudyDTO)" -->
+        <member name="M:LMS.API.Controllers.NotesController.GetNote(System.Int32)">
+            <summary>
+            This API get note data base on noteId param
+            </summary>
+            <param name="noteId"></param>
+            <returns> Note </returns>
+        </member>
+        <member name="M:LMS.API.Controllers.NotesController.GetNotes(LMS.Repository.Paging.PagingRequest,System.Int32,System.Int32,System.Boolean,System.Boolean)">
+            <summary>
+            This api get all note in a lesson 
+            </summary>
+            <param name="pagingRequest"></param>
+            <param name="courseId"></param>
+            <param name="lessonId"></param>
+            <returns>return list of note if success, otherwise return error message</returns>
+        </member>
+        <member name="M:LMS.API.Controllers.NotesController.CreateNote(LMS.Model.Request.NotesDTOs.NotesCreateDTO)">
+            <summary>
+            This api use to create new Note 
+            </summary>
+            <param name="notesCreateDTO"></param>
+            <returns>Stutus code: 200 if success, otherwise return error message </returns>
+        </member>
+        <member name="M:LMS.API.Controllers.NotesController.UpdateNote(LMS.Model.Request.NotesDTOs.NotesEditDTO)">
+            <summary>
+            This api use to edit existed note
+            </summary>
+            <returns>Stutus code: 200 if success, otherwise return error message </returns>
+        </member>
+        <member name="M:LMS.API.Controllers.NotesController.SoftDeleteNote(System.Int32)">
+            <summary>
+            This api use to soft delete  note
+            </summary>
+            <returns>Stutus code: 200 if success, otherwise return error message </returns>
+            
+        </member>
+        <member name="M:LMS.API.Controllers.NotificationsController.GetAllNotifications(LMS.Repository.Paging.PagingRequest)">
+            <summary>
+            Get All Notifications
+            </summary>
+            <returns>200 and list Notification, 400: ResponseResult</returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:LMS.API.Controllers.NotificationsController.GetNotificationsOfUser(System.Int32,LMS.Repository.Paging.PagingRequest)" -->
+        <member name="M:LMS.API.Controllers.NotificationsController.GetNotificationByID(System.Int32)">
+            <summary>
+            Get Notification By ID
+            </summary>
+            <param name="notificationID"></param>
+            <returns>NotificationDTO</returns>
+        </member>
+        <member name="M:LMS.API.Controllers.NotificationsController.UpdateNotification(System.Int32,LMS.Model.Request.NotificationDTOs.NotificationsEditDTO)">
+            <summary>
+            Update Notification
+            </summary>
+            <param name="notificationsEditDTO">NotificationsEditDTO notificationsEditDTO</param>
+            <returns>true:success, false: failed</returns>
+        </member>
+        <member name="M:LMS.API.Controllers.NotificationsController.DeleteNotification(System.Int32)">
+            <summary>
+            Delete Notification
+            </summary>
+            <param name="notificationID">int notificationID</param>
+            <returns>true:success, false: failed</returns>
+        </member>
+        <member name="M:LMS.API.Controllers.NotificationsController.CreateNotification(LMS.Model.Request.NotificationDTOs.NotificationsCreateDTO)">
+            <summary>
+            Create Notification
+            </summary>
+            <param name="notificationsCreateDTO">NotificationsCreateDTO notificationsCreateDTO</param>
+            <returns></returns>
+        </member>
+        <member name="M:LMS.API.Controllers.NotificationsController.CreateNotificationForEventCourse(LMS.Model.Request.NotificationDTOs.NotificationCreateEvent)">
+            <summary>
+            Create Notification Event Course
+            </summary>
+            <param name="notificationCreateEvent"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LMS.API.Controllers.NotificationsController.CreateNotificationForEventComment(LMS.Model.Request.NotificationDTOs.NotificationCreateEvent)">
+            <summary>
+            Create Notification Event Comment
+            </summary>
+            <param name="notificationCreateEvent"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LMS.API.Controllers.NotificationsController.CreateNotificationForEventOthers(LMS.Model.Request.NotificationDTOs.NotificationCreateEvent)">
+            <summary>
+            Create Notification Event Others
+            </summary>
+            <param name="notificationCreateEvent"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LMS.API.Controllers.QuizQuestionsController.GetQuizQuestionDetails(System.Int32)">
+            <summary>
+            Get Quiz Question Details
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+            <exception cref="T:LMS.Model.Exceptions.BadRequestException"></exception>
+        </member>
+        <member name="M:LMS.API.Controllers.QuizQuestionsController.CreateQuizQuestion(LMS.Model.Request.QuizQuestionDTOs.QuizQuestionCreateDTO)">
+            <summary>
+            Create a Quiz Question
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+            <exception cref="T:LMS.Model.Exceptions.BadRequestException"></exception>
+        </member>
+        <member name="M:LMS.API.Controllers.QuizQuestionsController.CreateQuizQuestions(System.Collections.Generic.List{LMS.Model.Request.QuizQuestionDTOs.QuizQuestionCreateDTO})">
+            <summary>
+            Create a list questions
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+            <exception cref="T:LMS.Model.Exceptions.BadRequestException"></exception>
+        </member>
+        <member name="M:LMS.API.Controllers.QuizQuestionsController.UpdateQuizQuestion(System.Int32,LMS.Model.Request.QuizQuestionDTOs.QuizQuestionEditDTO)">
+            <summary>
+            Update a Quiz
+            </summary>
+            <param name="id"></param>
+            <param name="request"></param>
+            <returns></returns>
+            <exception cref="T:LMS.Model.Exceptions.BadRequestException"></exception>
+        </member>
+        <member name="M:LMS.API.Controllers.QuizQuestionsController.DeleteQuizQuestion(System.Int32)">
+            <summary>
+            Solf delete a quiz
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+            <exception cref="T:LMS.Model.Exceptions.BadRequestException"></exception>
+        </member>
+        <member name="M:LMS.API.Controllers.QuizQuestionsController.CreateQuizQuestionsFromFileExcel(System.String,System.Int32)">
+            <summary>
+            Create Quiz Questions From File Excel
+            </summary>
+            <param name="fileExcel">fileExcel</param>
+            <param name="quizID">quizID</param>
+            <returns>quizQuestionsDTOs</returns>
+        </member>
+        <member name="M:LMS.API.Controllers.QuizSubmissionsController.CheckQuizSubmissionCompleted(System.Int32,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="userID"></param>
+            <param name="quizID"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LMS.API.Controllers.QuizSubmissionsController.CheckQuizSubmissionCompleted(LMS.Model.Request.CommonDTOs.CheckStatusStudyDTO)">
+            <summary>
+            Check QuizSubmission to confirm user completed the quiz of Section
+            </summary>
+            <param name="checkStatusStudyDTO">CheckStatusStudyDTO</param>
+            <returns>true: completed | false: in progress </returns>
+        </member>
+        <member name="M:LMS.API.Controllers.QuizSubmissionsController.HandleQuizSubmission(LMS.Model.Request.QuizSubmissionDTOs.UserAnswersDTO)">
+            <summary>
+            Haldle QuizSubmission after user completed the Quiz, Caculate quiz, create quiz submission, create answer
+            </summary>
+            <param name="quizSubmissionCreateDTO">QuizSubmissionCreateDTO</param>
+            <returns>QuizsubmissionDTO</returns>
+        </member>
+        <member name="M:LMS.API.Controllers.QuizzesController.GetQuizDetails(System.Int32)">
+            <summary>
+            Get a Quiz with questions
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+            <exception cref="T:LMS.Model.Exceptions.BadRequestException"></exception>
+        </member>
+        <member name="M:LMS.API.Controllers.QuizzesController.CreateQuizSection(LMS.Model.Request.QuizDTOs.QuizCreateDTO)">
+            <summary>
+            Create a quiz for section
+            </summary>
+            <param name="request"></param>
+            <param name="sectionId"></param>
+            <returns></returns>
+            <exception cref="T:LMS.Model.Exceptions.BadRequestException"></exception>
+        </member>
+        <member name="M:LMS.API.Controllers.QuizzesController.UpdateQuiz(System.Int32,LMS.Model.Request.QuizDTOs.QuizEditDTO)">
+            <summary>
+            Update quiz
+            </summary>
+            <param name="id"></param>
+            <param name="request"></param>
+            <returns></returns>
+            <exception cref="T:LMS.Model.Exceptions.BadRequestException"></exception>
+        </member>
+        <member name="M:LMS.API.Controllers.QuizzesController.DeleteQuiz(System.Int32)">
+            <summary>
+            delete quiz
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+            <exception cref="T:LMS.Model.Exceptions.BadRequestException"></exception>
+        </member>
+        <member name="M:LMS.API.Controllers.ReviewsController.PostReview(LMS.Model.Request.ReviewDTOs.ReviewCreateDTO)">
+            <summary>
+            API add review a course of User
+            </summary>
+            <param name="request">Review information create</param>
+            <returns>Reponse</returns>
+        </member>
+        <member name="M:LMS.API.Controllers.ReviewsController.PutReview(System.Int32,LMS.Model.Request.ReviewDTOs.ReviewEditDTO)">
+            <summary>
+            API update Review acourse of User
+            </summary>
+            <param name="id">Id of Review</param>
+            <param name="request">>Review information update</param>
+            <returns>Reponse</returns>
+        </member>
+        <member name="M:LMS.API.Controllers.ReviewsController.UpdateReviewHelpfulnessLevel(System.Int32,System.Boolean)">
+            <summary>
+            
+            </summary>
+            <param name="id"></param>
+            <param name="isHelpful"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LMS.API.Controllers.ReviewsController.SearchReview(System.String,LMS.Repository.Paging.PagingRequest)">
+            <summary>
+            API find review by content
+            </summary>
+            <param name="search">Content want to find</param>
+            <param name="pagingRequest"></param>
+            <returns>List ReviewDTO</returns>
+        </member>
+        <member name="M:LMS.API.Controllers.ReviewsController.GetRatingByInstructorId(System.Int32)">
+            <summary>
+            Api Calculate the number of ratings by level: 1, 2, 3, 4, 5 to review of course create by Instructor
+            </summary>
+            <param name="id">Id of course</param>
+            <returns>List int</returns>
+        </member>
+        <member name="M:LMS.API.Controllers.ReviewsController.GetAverageRatingfOfInstructor(System.Int32)">
+            <summary>
+            Api Calculate average all rating to review of course create by Instructor
+            </summary>
+            <param name="id">Id of course</param>
+            <returns>float</returns>
+        </member>
+        <member name="M:LMS.API.Controllers.ReviewsController.GetAllReviewForInstructor(System.Int32,LMS.Repository.Paging.PagingRequest)">
+            <summary>
+            Api get list newest review to all course of specify Instructor
+            </summary>
+            <param name="id">Id of Instructor</param>
+            <param name="pagingRequest">PageSize:number record, pageNumber: position of page</param>
+            <returns>List ReviewDTO</returns>
+        </member>
+        <member name="M:LMS.API.Controllers.ReviewsController.GetReviewOfCourse(System.Int32,LMS.Repository.Paging.PagingRequest)">
+            <summary>
+            Api get list newest review of specify course
+            </summary>
+            <param name="id">Id of course</param>
+            <param name="pagingRequest">PageSize:number record, pageNumber: position of page</param>
+            <returns>List ReviewDTO</returns>
+        </member>
+        <member name="M:LMS.API.Controllers.ReviewsController.GetRatingByCourseId(System.Int32)">
+            <summary>
+            Api Calculate the number of ratings by level: 1, 2, 3, 4, 5 to review of specify course
+            </summary>
+            <param name="id">Id of course</param>
+            <returns>List int</returns>
+        </member>
+        <member name="M:LMS.API.Controllers.ReviewsController.GetAverageRatingByCourseId(System.Int32)">
+            <summary>
+            Api Calculate average all rating to review of specify course
+            </summary>
+            <param name="id">Id of course</param>
+            <returns>float</returns>
+        </member>
+        <member name="M:LMS.API.Controllers.SectionsController.Get(LMS.Repository.Paging.PagingRequest)">
+            <summary>
+            This action method is for getting a list of sections
+            </summary>
+            <param name="pagingRequest">Paging object</param>
+            <returns>A list of Section DTOs</returns>
+        </member>
+        <member name="M:LMS.API.Controllers.SectionsController.GetBasicCourseSectionsContent(System.Int32,System.Int32)">
+            <summary>
+            This action method is for getting a list of basic sections
+            to displaying in a course content in Course Study Page.
+            </summary>
+            <param name="courseId">A course ID of type int for filtering</param>
+            <param name="userId">Id of an user studying with these sections</param>
+            <returns>A list of section basic DTOs</returns>
+        </member>
+        <member name="M:LMS.API.Controllers.SectionsController.GetBasicCourseSectionContent(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            This action method is for getting a basic section for displaying in course study page
+            </summary>
+            <param name="courseId">Id of a course this section belongs to</param>
+            <param name="sectionId">Id of a section to get</param>
+            <param name="userId">Id of a user currently studying this section for tracking statuses</param>
+            <returns>A section basic DTO object</returns>
+        </member>
+        <member name="M:LMS.API.Controllers.SectionsController.Get(System.Int32)">
+            <summary>
+            Gets a section base on it ID
+            </summary>
+            <param name="id">ID of a section</param>
+            <returns></returns>
+        </member>
+        <member name="M:LMS.API.Controllers.SectionsController.CreateSection(LMS.Model.Request.SectionDTOs.SectionCreateDTO)">
+            <summary>
+            This action method is for creating a new section into the DB
+            </summary>
+            <param name="request">A section create DTO</param>
+            <returns>A section DTO object</returns>
+        </member>
+        <member name="M:LMS.API.Controllers.SectionsController.UpdateSection(LMS.Model.Request.SectionDTOs.SectionEditDTO)">
+            <summary>
+            This action method is for updating an existing section in the DB
+            </summary>
+            <param name="request">Section edit DTO</param>
+            <returns>Success: true | Fail: false</returns>
+        </member>
+        <member name="M:LMS.API.Controllers.SectionsController.DeleteSection(System.Int32)">
+            <summary>
+            This action method is for deleting an existing section in the DB.
+            </summary>
+            <param name="id">ID of type int</param>
+            <returns>Success: true | Fail: false</returns>
+        </member>
+        <member name="M:LMS.API.Controllers.ShoppingCartController.AddCourseToCart(System.Int32)">
+            <summary>
+            Add course to shopping cart, a course in cart is pending
+            </summary>
+            <param name="courseId">course's id use to find course</param>
+            <returns>list of course that student want to by</returns>
+            
+        </member>
+        <member name="M:LMS.API.Controllers.ShoppingCartController.RemoveCourseToCart(System.Int32)">
+            <summary>
+            Remove course from cart
+            </summary>
+            <param name="courseId">course's id</param>
+            <returns>Shopping cart information after delete course</returns>
+        </member>
+        <member name="M:LMS.API.Controllers.ShoppingCartController.GetShoppingCart">
+            <summary>
+            Get all course in shopping cart, original price, discount price, and total price need to pay
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:LMS.API.Controllers.ShoppingCartController.ApplyCouponCode(System.String)">
+            <summary>
+            Apply coupon code for shopping cart
+            </summary>
+            <param name="userId">user login's  id</param>
+            <param name="couponCode">voucher sales off</param>
+            <returns>user's cart after sales off</returns>
+        </member>
+        <member name="M:LMS.API.Controllers.ShoppingCartController.CheckOutShoppingCart">
+            <summary>
+            check out shopping cart
+            </summary>
+            <param name="userId">user id</param>
+            <returns>create order header and order detail and check all item in shopping cart is active</returns>
+        </member>
+        <member name="M:LMS.API.Controllers.UsersController.GetTotalCoursePurchase">
+            <summary>
+            Get total course purchase
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:LMS.API.Controllers.UsersController.GetTotalReviews">
+            <summary>
+            Get total reviews
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:LMS.API.Controllers.UsersController.GetTotalSubscriptions">
+            <summary>
+            Get total subscriptions
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:LMS.API.Controllers.UsersController.GetTotalCertificates">
+            <summary>
+            Get total certificates
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:LMS.API.Controllers.UsersController.GetAboutMe">
+            <summary>
+            Get about me of user logged
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:LMS.API.Controllers.UsersController.GetPurchasedCourses(System.Int32,LMS.Repository.Paging.PagingRequest)">
+            <summary>
+            Get purchased courses
+            </summary>
+            <param name="userId"></param>
+            <param name="pagingRequest"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LMS.API.Controllers.UsersController.GetDiscussions(System.Int32,LMS.Repository.Paging.PagingRequest)">
+            <summary>
+            Get discussions
+            </summary>
+            <param name="userId"></param>
+            <param name="pagingRequest"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LMS.API.Controllers.UsersController.GetById(System.Int32)">
+            <summary>
+            Get user by id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LMS.API.Controllers.UsersController.Update(System.Int32,LMS.Model.Response.AppUserDTOs.AppUserDTO)">
+            <summary>
+            Edit info user logged 
+            </summary>
+            <param name="id"></param>
+            <param name="user"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LMS.API.Controllers.UsersController.GetTotalSubcriber(System.Int32)">
+            <summary>
+            Get total of User
+            </summary>
+            <param name="userId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LMS.API.Controllers.UsersController.UpdateNotificationSetting(LMS.Model.Request.NotificationSettingDTOs.NotificationSettingEditDTO)">
+            <summary>
+            Update notification setting of user logged
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LMS.API.Controllers.UsersController.UpdatePrivacySetting(LMS.Model.Request.PrivacySettingDTOs.PrivacySettingEditDTO)">
+            <summary>
+            Update privacy setting of user logged
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LMS.API.Controllers.UsersController.UpdateBillingAddress(LMS.Model.Request.BillingAddressDTOs.BillingAddressEditDTO)">
+            <summary>
+            Update billing address of user logged
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LMS.API.Controllers.UsersController.GetTotalViewInstructorByDay(System.Int32,System.String)">
+            <summary>
+            Get total view course of instructor by day
+            </summary>
+            <param name="instructorId"></param>
+            <param name="date">MM/dd/yyyy Ex:(01/06/2021)</param>
+            <returns>int</returns>
+        </member>
+        <member name="M:LMS.API.Controllers.UsersController.GetTotalViewInstructorByWeek(System.Int32,System.String)">
+            <summary>
+            Get total view of course of instructor weekly
+            Get view 7 day latest
+            </summary>
+            <param name="instructorId"></param>
+            <param name="date">MM/dd/yyyy ex: 01/14/2021</param>
+            <returns>int</returns>
+        </member>
+    </members>
+</doc>

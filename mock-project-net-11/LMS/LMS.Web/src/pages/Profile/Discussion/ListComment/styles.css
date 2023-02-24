@@ -1,0 +1,10 @@
+.btnAction{
+    border: none;
+    background-color: #fff;
+}
+.blockReply{
+    margin-left: auto;
+}
+.blockReply .btnReply {
+    margin-top: unset;
+}

@@ -1,0 +1,27 @@
+.titleOverview{
+    display: flex;
+    justify-content: space-around;
+}
+.titleOverview .titleOverview--author{
+    font-weight: bold;
+    color: #000;
+}
+.reviewFeature {
+    border: solid 1px #000;
+    background-color: #ccc;
+    margin-top: 20px;
+}
+.rv1458{
+    display: flex;
+}
+.rv1458 .time_145{
+    margin-left: 10px;
+    color: #000;
+}
+.rvds10{
+    color: #000;
+}
+.requirement, .inforAuthor{
+    color: tomato;
+    font-weight: bold;
+}
